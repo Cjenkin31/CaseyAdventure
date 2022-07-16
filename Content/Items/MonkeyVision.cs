@@ -30,12 +30,23 @@ namespace CaseyAdventure.Content.Items
 			Item.shootSpeed = 10f; 
 			Item.useAnimation = 5; 
 			Item.useTime = 5; // The item's use time in ticks (60 ticks == 1 second.)
-			Item.useStyle = ItemUseStyleID.RaiseLamp;
+			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.value = Item.buyPrice(gold: 1);
-
 			Item.shoot = ModContent.ProjectileType<Projectiles.MonkeyLaser>();
+			Item.holdStyle = ItemHoldStyleID.HoldGolfClub;
 		}
-        // Trying to get the glasses on top of the Player. Can't figure this one out
+        public override void HoldStyle(Player player, Rectangle heldItemFrame)
+        {
+
+				player.itemLocation.X = player.Center.X-25;
+				player.itemLocation.Y = player.position.Y-13 + 21f - 3f * player.gravDir + player.mount.PlayerOffsetHitbox;
+			player.itemRotation = 0f;
+		}
+        public override Vector2? HoldoutOffset()
+		{
+			return new Vector2(-9f, -10f);
+		}
+		// Trying to get the glasses on top of the Player. Can't figure this one out
 		// public override bool? UseItem(Player player)
 		// {
 		// 	if (player.whoAmI != Main.LocalPlayer.whoAmI)
