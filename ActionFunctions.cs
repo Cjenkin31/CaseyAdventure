@@ -18,7 +18,7 @@ namespace CaseyAdventure
 			return !(Collision.EmptyTile(tilex, tiley+1, false));
 		}
 
-        public static bool build(int tilex,int tiley)
+        public static bool build(int tilex,int tiley) // Build function made for creating the beanstalk. Can be used by other items if I add in some checks
 		{
 			if(!IsOnGround(tilex,tiley)){
 				return true;
