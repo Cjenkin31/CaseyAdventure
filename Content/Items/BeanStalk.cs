@@ -24,8 +24,8 @@ namespace CaseyAdventure.Content.Items
 			Item.height = 12;
 			Item.maxStack = 1;
 			Item.useTurn = true;
-			Item.useAnimation = 60;
-			Item.useTime = 60;
+			Item.useAnimation = 30;
+			Item.useTime = 30;
 			Item.useStyle = ItemUseStyleID.Swing;
             Item.consumable = true;
         }
