@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "R+qEQkzfJlpOg2mPnSG0h2DKC2a7e8stUmWzMNtkFORShPoSvPLeGFkyHcud6Kp11g8yzcmBGktyTB3OVaeTeg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\chris\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CaseyAdventure\\CaseyAdventure.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\chris\\.nuget\\packages\\tmodloader.codeassist\\0.1.5\\tmodloader.codeassist.0.1.5.nupkg.sha512"
+  ],
+  "logs": []
+}
