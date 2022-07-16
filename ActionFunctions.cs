@@ -31,7 +31,21 @@ namespace CaseyAdventure
 						}
 						int cx = tilex;
 						int cy = y;
+						int rdm = Main.rand.Next(1,7);
 						WorldGen.PlaceTile(cx, cy, TileID.VineRope);
+						if (rdm == 1)
+						{
+							if (!BlockInWay(cx+1, cy+1)){
+								WorldGen.PlaceTile(cx+1, cy, TileID.VineRope);
+							}
+						} 
+						else if (rdm ==2)
+						{
+							if (!BlockInWay(cx-1, cy+1)){
+								WorldGen.PlaceTile(cx-1, cy, TileID.VineRope);
+							}
+						}
+
 						y--;
 					}
 					return true;
