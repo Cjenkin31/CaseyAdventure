@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CaseyAdventure.Items
+namespace CaseyAdventure.Content.Items
 {
 	public class Starter : ModItem
 	{
