@@ -1,2 +1,0 @@
-- If you have any cool ideas feel free to make a branch and PR it
-- I will most likely merge it as long as it does not have any major flaws(Mine already do)
