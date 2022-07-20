@@ -22,9 +22,10 @@ namespace CaseyAdventure.Content.Items
 			Item.height = 5;
 
 			Item.autoReuse = true;
-			Item.damage = 12; 
-			Item.DamageType = DamageClass.Ranged; 
+			Item.damage = 17; 
+			Item.DamageType = DamageClass.Magic; 
 			Item.knockBack = 4f;
+			Item.mana = 4;
 			Item.noMelee = true;
 			Item.rare = ItemRarityID.Yellow; 
 			Item.shootSpeed = 10f; 
@@ -64,8 +65,9 @@ namespace CaseyAdventure.Content.Items
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ItemID.DirtBlock, 1);
-			recipe.AddTile(TileID.WorkBenches);
+			recipe.AddIngredient(ItemID.Sunglasses, 1);
+			recipe.AddIngredient(ItemID.MeteoriteBar, 15);
+			recipe.AddTile(TileID.Anvils);
 			recipe.Register();
 		}
 	}
