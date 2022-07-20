@@ -47,7 +47,8 @@ namespace CaseyAdventure.Content.Items
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.DirtBlock, 0);
+            recipe.AddIngredient(ItemID.SunplateBlock, 5);
+            recipe.AddIngredient(ItemID.Cloud, 5);
             recipe.Register();
         }
     }
