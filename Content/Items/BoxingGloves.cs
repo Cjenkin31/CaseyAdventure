@@ -46,7 +46,8 @@ namespace CaseyAdventure.Content.Items
         public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ItemID.DirtBlock, 1);
+			recipe.AddIngredient(ItemID.Silk, 2);
+			recipe.AddIngredient(ItemID.SandBlock, 20);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 		}
