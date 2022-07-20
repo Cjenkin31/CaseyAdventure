@@ -20,13 +20,13 @@ namespace CaseyAdventure.Content.Items
 
         public override void SetDefaults()
         {
-			Item.width = 12;
-			Item.height = 12;
-			Item.maxStack = 1;
-			Item.useTurn = true;
-			Item.useAnimation = 30;
-			Item.useTime = 30;
-			Item.useStyle = ItemUseStyleID.Swing;
+            Item.width = 12;
+            Item.height = 12;
+            Item.maxStack = 1;
+            Item.useTurn = true;
+            Item.useAnimation = 30;
+            Item.useTime = 30;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.consumable = true;
         }
 
@@ -45,7 +45,7 @@ namespace CaseyAdventure.Content.Items
             int playerY = (int)(playerPosition.Y / 16f);
             int diffX = playerX - tileX;
             int diffY = playerY - tileY;
-            if (diffX >=-5 && diffX <=5 && diffY >=-5 && diffY <= 5)
+            if (diffX >= -5 && diffX <= 5 && diffY >= -5 && diffY <= 5)
             {
                 if (ActionFunctions.build(tileX, tileY))
                 {

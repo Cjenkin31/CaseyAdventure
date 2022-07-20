@@ -45,13 +45,13 @@ namespace CaseyAdventure.Content.Items
         {
             int rdm = Main.rand.Next(1, 10);
             for (int i = 0; i < rdm; i++)
-            { 
+            {
                 // Credit to https://forums.terraria.org/index.php?threads/tutorial-tmodloader-projectile-help.68337/
                 // User: AwesomePerson159 (great name btw)
                 // I would be so lost without this
                 Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(12)); //12 is the spread in degrees, although like with Set Spread it's technically a 24 degree spread due to the fact that it's randomly between 12 degrees above and 12 degrees below your cursor.
 
-            Projectile.NewProjectile(source, position, perturbedSpeed, type, damage, knockback);
+                Projectile.NewProjectile(source, position, perturbedSpeed, type, damage, knockback);
             }
             return true;
         }
