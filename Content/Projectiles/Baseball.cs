@@ -78,7 +78,7 @@ namespace CaseyAdventure.Content.Projectiles
             int distanceFromPlayerX = (int)(Projectile.position.X - player.position.X);
             int distanceFromPlayerY = (int)(Projectile.position.Y - player.position.Y);
             Projectile.velocity.X -= 1 / Projectile.timeLeft;
-            if (IsCloseToPlayer(player, distanceFromPlayerX, distanceFromPlayerY)
+            if (IsCloseToPlayer(player, distanceFromPlayerX, distanceFromPlayerY))
                 {
                 if (IsSwingingWithBat(player,Projectile))
                 {
