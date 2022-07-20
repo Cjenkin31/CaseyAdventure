@@ -14,7 +14,7 @@ namespace CaseyAdventure.Content.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 50;
+			Item.damage = 20;
 			Item.DamageType = DamageClass.Melee;
 			Item.width = 40;
 			Item.height = 40;
