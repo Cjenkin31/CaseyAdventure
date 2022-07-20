@@ -78,18 +78,34 @@ namespace CaseyAdventure.Content.Projectiles
             int distanceFromPlayerX = (int)(Projectile.position.X - player.position.X);
             int distanceFromPlayerY = (int)(Projectile.position.Y - player.position.Y);
             Projectile.velocity.X -= 1 / Projectile.timeLeft;
-            if (distanceFromPlayerX < 20 && distanceFromPlayerX > -20 && distanceFromPlayerY < 20 && distanceFromPlayerY > -20)
-            {
-
-                if (player.ItemAnimationActive && Projectile.timeLeft < 900 && player.HeldItem.type == ModContent.ItemType<BaseballBat>())
+            if (IsCloseToPlayer(player, distanceFromPlayerX, distanceFromPlayerY)
+                {
+                if (IsSwingingWithBat(player,Projectile))
                 {
                     Projectile.velocity.X *= (float)-1.0001;
                     Projectile.velocity.Y *= (float)-1.0001;
                     Projectile.timeLeft += 10;
                     Projectile.damage += 5;
-
                 }
             }
+        }
+
+        private bool IsSwingingWithBat(Player player, Projectile projectile)
+        {
+            if (player.ItemAnimationActive && projectile.timeLeft < 900 && player.HeldItem.type == ModContent.ItemType<BaseballBat>())
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private bool IsCloseToPlayer(Player player, int distanceFromPlayerX, int distanceFromPlayerY)
+        {
+            if (distanceFromPlayerX < 20 && distanceFromPlayerX > -20 && distanceFromPlayerY < 20 && distanceFromPlayerY > -20)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
