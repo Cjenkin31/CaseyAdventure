@@ -20,7 +20,7 @@ namespace CaseyAdventure
             return !(Collision.EmptyTile(tilex, tiley + 1, false));
         }
 
-        public static bool build(int tilex, int tiley) // Build function made for creating the beanstalk. Can be used by other items if I add in some checks
+        public static bool build(int tilex, int tiley)
         {
             if (!IsOnGround(tilex, tiley))
             {
@@ -70,25 +70,25 @@ namespace CaseyAdventure
             Vector2 startingPos = new Vector2(tilex, tiley);
             Vector2 tilesAwayRight = new Vector2();
             Vector2 tilesAwayLeft = new Vector2();
-            int worldMaxX = Main.maxTilesX; // World Border
-            int worldMaxY = 600; // set to 600 since that's the average of how low islands are
+            int worldMaxX = Main.maxTilesX; 
+            int worldMaxY = 600;
 
-            ScanRightSide(ref rightFound, ref x, ref y, ref tilesAwayRight, worldMaxX, worldMaxY); // Scan the right side of the map for islands
+            ScanRightSide(ref rightFound, ref x, ref y, ref tilesAwayRight, worldMaxX, worldMaxY);
 
             int scanRange = 0;
-            scanRange = SetScanRange(tilex, rightFound, tilesAwayRight); // Scan range is set for scanning the left side of the map
+            scanRange = SetScanRange(tilex, rightFound, tilesAwayRight);
 
             x = tilex;
             y = 0;
 
-            ScanLeftSide(ref leftFound, ref x, ref y, ref tilesAwayLeft, worldMaxY, scanRange); // Scan the left side of the map for islands
+            ScanLeftSide(ref leftFound, ref x, ref y, ref tilesAwayLeft, worldMaxY, scanRange);
 
-            int numericalAwayRight = -1; // Defaults
+            int numericalAwayRight = -1;
             int numericalAwayLeft = -1;
-            string xAway = "You are: NIL X pos away."; // Set the defaults
-            string yAway = "You are: NIL Y pos away."; // Set the defaults
+            string xAway = "You are: NIL X pos away.";
+            string yAway = "You are: NIL Y pos away.";
 
-            numericalAwayRight = rightFound ? (int)tilesAwayRight.Distance(startingPos) : 99999999; // I feel like 99999999 is a big enough number
+            numericalAwayRight = rightFound ? (int)tilesAwayRight.Distance(startingPos) : 99999999;
             numericalAwayLeft = leftFound ? (int)tilesAwayLeft.Distance(startingPos) : 99999999;
 
 
@@ -99,7 +99,6 @@ namespace CaseyAdventure
                 return true;
             }
 
-            // Tell the user how close they are
             TellPlayerHowFar(xAway, yAway);
 
             return true;
@@ -118,9 +117,9 @@ namespace CaseyAdventure
                         y = 0;
                     }
                     int tyle = Main.tile[x, y].TileType;
-                    if (tyle == TileID.Sunplate || tyle == TileID.Cloud || tyle == TileID.RainCloud || tyle == TileID.SnowCloud) // Common island blocks
+                    if (tyle == TileID.Sunplate || tyle == TileID.Cloud || tyle == TileID.RainCloud || tyle == TileID.SnowCloud)
                     {
-                        tilesAwayRight.X = x; // Set the vector x & y
+                        tilesAwayRight.X = x;
                         tilesAwayRight.Y = y;
                         rightFound = true;
                     }
@@ -134,7 +133,7 @@ namespace CaseyAdventure
             {
                 while (!leftFound)
                 {
-                    if (x <= scanRange || x <= 0) // x<=0 just in case we hit the edge
+                    if (x <= scanRange || x <= 0)
                     {
                         break;
                     }
@@ -159,24 +158,22 @@ namespace CaseyAdventure
 
             static void SetChatMessage(int tilex, int tiley, bool rightFound, bool leftFound, Vector2 tilesAwayRight, Vector2 tilesAwayLeft, int numericalAwayRight, int numericalAwayLeft, ref string xAway, ref string yAway)
             {            
-                // I do extra checks just to be safe...
-                if (numericalAwayLeft > numericalAwayRight || !leftFound) // If the left is further away or there was no left found...
+                if (numericalAwayLeft > numericalAwayRight || !leftFound)
                 {
-                    // Check to see if the island is on the left or right side of the player
+
                     xAway = ((tilex - tilesAwayRight.X) < 0) ? "Island located: " + Math.Abs((tilex - tilesAwayRight.X)) + " blocks to the right" : "Island located: " + (tilex - tilesAwayRight.X) + " blocks to the left";
-                    yAway = "You are: " + (tiley - tilesAwayRight.Y) + " Y pos away."; // Distance up and down away
+                    yAway = "You are: " + (tiley - tilesAwayRight.Y) + " Y pos away."; 
                 }
-                else if (numericalAwayRight > numericalAwayLeft || !rightFound) // If the right is further away or there was no right found...
+                else if (numericalAwayRight > numericalAwayLeft || !rightFound)
                 {
-                    // Check to see if the island is on the left or right side of the player
                     xAway = ((tilex - tilesAwayLeft.X) < 0) ? "Island located: " + (tilex - tilesAwayLeft.X) + " blocks to the right" : "Island located: " + Math.Abs((tilex - tilesAwayLeft.X)) + " blocks to the left";
-                    yAway = "You are: " + (tiley - tilesAwayLeft.Y) + " Y pos away."; // Distance up and down away
+                    yAway = "You are: " + (tiley - tilesAwayLeft.Y) + " Y pos away.";
                 }
             }
 
             static bool CheckIfPlayerIsOnIsland(string xAway)
             {
-                if (xAway == "You are: NIL X pos away.") // If nothing was set, the user is hopefully at the island because left and right should be ==
+                if (xAway == "You are: NIL X pos away.")
                 {
                     Main.NewText("You Found It!", 150, 250, 150);
                     return true;
@@ -196,17 +193,51 @@ namespace CaseyAdventure
                 int scanRange;
                 if (!rightFound)
                 {
-                    scanRange = 0; // This sets the scan range to infinite given there was nothing on the right
+                    scanRange = 0;
                 }
-                else // If the right was found, no need to search the entire left side of the map since I'm looking for the closest
+                else
                 {
-                    scanRange = (int)Math.Abs(tilex - (tilesAwayRight.X - tilex)); // This is the range away from the player pos. Ex. Player pos: 2000 Found at: 2500, Range is 500. So it searches 1500->2000
+                    scanRange = (int)Math.Abs(tilex - (tilesAwayRight.X - tilex));
                 }
 
                 return scanRange;
             }
         }
 
+        enum SlotMachineSymbols
+        {
+            Heart = 0,
+            Diamond = 1,
+            Spade = 2,
+            Club = 3,
+            Seven = 4,
+            Cherry = 5,
+            Clover = 6,
+            Crown = 7,
+            Bar = 8,
+            Win = 9
 
+        }
+        public static bool SpinSlotMachine(int currency)
+        {
+            if (currency < 1)
+            {
+                Main.NewText("You did not have enough money", 150, 250, 150);
+            }
+            SlotMachineSymbols[] slotMachineCol1= new SlotMachineSymbols[] {SlotMachineSymbols.Heart,SlotMachineSymbols.Diamond,
+                                                                                    SlotMachineSymbols.Spade,SlotMachineSymbols.Club,
+                                                                                    SlotMachineSymbols.Seven,SlotMachineSymbols.Cherry,
+                                                                                    SlotMachineSymbols.Clover,SlotMachineSymbols.Bar,
+                                                                                    SlotMachineSymbols.Crown,SlotMachineSymbols.Win};
+            SlotMachineSymbols[] slotMachineCol2 = slotMachineCol1;
+            SlotMachineSymbols[] slotMachineCol3 = slotMachineCol1;                                                                       
+            int rdm = Main.rand.Next(0, 9);
+            SlotMachineSymbols middleSymbolCol1 = slotMachineCol1[rdm];
+            rdm = Main.rand.Next(0, 9);
+            SlotMachineSymbols middleSymbolCol2 = slotMachineCol2[rdm];
+            rdm = Main.rand.Next(0, 9);
+            SlotMachineSymbols middleSymbolCol3 = slotMachineCol3[rdm];
+            return true;
+        }
     }
 }

@@ -47,21 +47,6 @@ namespace CaseyAdventure.Content.Items
         {
             return new Vector2(-9f, -10f);
         }
-        // Trying to get the glasses on top of the Player. Can't figure this one out
-        // public override bool? UseItem(Player player)
-        // {
-        // 	if (player.whoAmI != Main.LocalPlayer.whoAmI)
-        // 	{
-        // 		return true;
-        // 	}
-
-        // 	Vector2 playerPosition = player.position;
-        // 	Vector2 mousePosition = Main.MouseWorld;
-        // 	int playerX = (int)(playerPosition.X / 16f);
-        // 	int playerY = (int)(playerPosition.Y / 16f);
-        // 	Item.Size = playerPosition;
-        // 	return true;
-        // }
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();

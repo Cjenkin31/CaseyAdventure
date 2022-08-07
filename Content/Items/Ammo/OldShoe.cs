@@ -25,13 +25,10 @@ namespace CaseyAdventure.Content.Items.Ammo
 			Item.knockBack = 2f;
 			Item.value = Item.sellPrice(0, 0, 1, 0);
 			Item.rare = ItemRarityID.Yellow;
-			Item.shoot = ModContent.ProjectileType<Projectiles.ShoeProjectile>(); // The projectile that weapons fire when using this item as ammunition.
+			Item.shoot = ModContent.ProjectileType<Projectiles.ShoeProjectile>();
 
-			Item.ammo = Item.type; // Important. The first item in an ammo class sets the AmmoID to its type
+			Item.ammo = Item.type; 
 		}
-
-		// Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.
-		// Here we create recipe for 999/ExampleCustomAmmo stack from 1/ExampleItem
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();

@@ -10,7 +10,7 @@ namespace CaseyAdventure.Content.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Baseball Bat"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
+            DisplayName.SetDefault("Baseball Bat");
             Tooltip.SetDefault("Shoots a baseball that you can reflect to deal more damage.");
         }
 
