@@ -13,3 +13,5 @@ Current Items
   | Shoots old shoes at your enemies. Uses old shoes as ammo
 - Can of Air
   | Shoots air at your enemies
+- Baseball bat
+  | shoots out a baseball that you can hit back for extra damage
