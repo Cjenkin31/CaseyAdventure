@@ -47,7 +47,7 @@ namespace CaseyAdventure.Content.Items
             int diffY = playerY - tileY;
             if (diffX >= -5 && diffX <= 5 && diffY >= -5 && diffY <= 5)
             {
-                if (ActionFunctions.build(tileX, tileY))
+                if (ActionFunctions.BuildSkyRope(tileX, tileY))
                 {
                     return true;
                 }
