@@ -228,45 +228,39 @@ namespace CaseyAdventure
                 {
                     scanRange = (int)Math.Abs(tilex - (tilesAwayRight.X - tilex));
                 }
-
                 return scanRange;
             }
         }
-
-        enum SlotMachineSymbols
-        {
-            Heart = 0,
-            Diamond = 1,
-            Spade = 2,
-            Club = 3,
-            Seven = 4,
-            Cherry = 5,
-            Clover = 6,
-            Crown = 7,
-            Bar = 8,
-            Win = 9
-
+        public static String[] getSymbols(){
+            String[] symbols = { "Bar","Seven","Cherries"};
+            return symbols;
         }
-        public static bool SpinSlotMachine(int currency)
+        public static String[] randomizeSymbols(String[] symbols)
         {
-            if (currency < 1)
-            {
-                Main.NewText("You did not have enough money", 150, 250, 150);
+            int symbolLength = symbols.Length;
+            Random rnd = new Random();
+            for (int i = 0; i < symbolLength; i++){
+                symbols[rnd.Next(0, symbolLength)] = symbols[rnd.Next(0, symbolLength)];
             }
-            SlotMachineSymbols[] slotMachineCol1= new SlotMachineSymbols[] {SlotMachineSymbols.Heart,SlotMachineSymbols.Diamond,
-                                                                                    SlotMachineSymbols.Spade,SlotMachineSymbols.Club,
-                                                                                    SlotMachineSymbols.Seven,SlotMachineSymbols.Cherry,
-                                                                                    SlotMachineSymbols.Clover,SlotMachineSymbols.Bar,
-                                                                                    SlotMachineSymbols.Crown,SlotMachineSymbols.Win};
-            SlotMachineSymbols[] slotMachineCol2 = slotMachineCol1;
-            SlotMachineSymbols[] slotMachineCol3 = slotMachineCol1;                                                                       
-            int rdm = Main.rand.Next(0, 9);
-            SlotMachineSymbols middleSymbolCol1 = slotMachineCol1[rdm];
-            rdm = Main.rand.Next(0, 9);
-            SlotMachineSymbols middleSymbolCol2 = slotMachineCol2[rdm];
-            rdm = Main.rand.Next(0, 9);
-            SlotMachineSymbols middleSymbolCol3 = slotMachineCol3[rdm];
-            return true;
+            return symbols;
+        }
+        public static int SpinSlotMachine()
+        {
+            String[] column1 = randomizeSymbols(getSymbols());
+            String[] column2 = randomizeSymbols(getSymbols());
+            String[] column3 = randomizeSymbols(getSymbols());
+
+            if (String.Equals(column1[0],column2[0]) && String.Equals(column2[0], column3[0]))
+            {
+                return column1[0] switch
+                {
+                    "Seven" => 20,
+                    "Bar" => 5,
+                    "Cherries" => 2,
+                    _ => 0,
+                };
+            }
+            return 0;
         }
     }
 }
