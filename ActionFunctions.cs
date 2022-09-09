@@ -20,7 +20,7 @@ namespace CaseyAdventure
             return !(Collision.EmptyTile(tilex, tiley + 1, false));
         }
 
-        public static bool build(int tilex, int tiley)
+        public static bool BuildSkyRope(int tilex, int tiley)
         {
             if (!IsOnGround(tilex, tiley))
             {
@@ -60,6 +60,35 @@ namespace CaseyAdventure
                     }
                 }
             }
+        }
+        public static bool BuildBridge(int tilex, int tiley)
+        {
+            if (!IsOnGround(tilex, tiley))
+            {
+                return true;
+            }
+            int x = tilex;
+            int blocksLeft = 500;
+            while (blocksLeft > 0)
+            {
+                Console.WriteLine("Help");
+                if (BlockInWay(x, tiley))
+                {
+                    for(int i =0; i < 3; i++)
+                    {
+                        WorldGen.PlaceTile(x, tiley+i, TileID.Stone);
+                    }
+                }
+                int cx = x;
+                int cy = tiley ;
+                WorldGen.PlaceTile(cx, cy, TileID.Stone);
+
+                blocksLeft--;
+                x++;
+            }
+            return true;
+
+            
         }
         public static bool Find(int tilex, int tiley)
         {
