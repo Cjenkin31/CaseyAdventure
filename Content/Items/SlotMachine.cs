@@ -37,8 +37,16 @@ namespace CaseyAdventure.Content.Items
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.DirtBlock, 0);
+            recipe.AddIngredient(ItemID.IronBar, 6);
+            recipe.AddIngredient(ItemID.GoldBar, 10);
+            recipe.AddTile(TileID.Anvils);
             recipe.Register();
+
+            Recipe recipeLead = CreateRecipe();
+            recipeLead.AddIngredient(ItemID.LeadBar, 6);
+            recipe.AddIngredient(ItemID.PlatinumBar, 10);
+            recipeLead.AddTile(TileID.Anvils);
+            recipeLead.Register();
         }
         public override bool? UseItem(Player player)
         {

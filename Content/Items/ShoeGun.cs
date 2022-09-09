@@ -44,6 +44,11 @@ namespace CaseyAdventure.Content.Items
             recipe.AddIngredient(ItemID.IronBar, 6);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
+
+            Recipe recipeLead = CreateRecipe();
+            recipeLead.AddIngredient(ItemID.LeadBar, 6);
+            recipeLead.AddTile(TileID.Anvils);
+            recipeLead.Register();
         }
     }
 }

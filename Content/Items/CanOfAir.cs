@@ -56,10 +56,15 @@ namespace CaseyAdventure.Content.Items
         }
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.IronBar, 8);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.Register();
+            Recipe recipeIron = CreateRecipe();
+            recipeIron.AddIngredient(ItemID.IronBar, 8);
+            recipeIron.AddTile(TileID.WorkBenches);
+            recipeIron.Register();
+
+            Recipe recipeLead = CreateRecipe();
+            recipeLead.AddIngredient(ItemID.LeadBar, 8);
+            recipeLead.AddTile(TileID.WorkBenches);
+            recipeLead.Register();
         }
     }
 }
