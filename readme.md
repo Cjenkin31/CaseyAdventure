@@ -15,3 +15,7 @@ Current Items
   | Shoots air at your enemies
 - Baseball bat
   | shoots out a baseball that you can hit back for extra damage
+- Throwing Cards
+  | Throws 3 cards each doing seperate things
+- Slot Machine
+  | Shoots a random amount of coins
