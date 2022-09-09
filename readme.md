@@ -1,4 +1,4 @@
-- This is a mod made for one of my friends
+- Terraria Mod, Currently unpublished.
 - If you see any obvious problems, please make an issue for it
 Current Items
 - Floating Island Finder:
@@ -13,3 +13,5 @@ Current Items
   | Shoots old shoes at your enemies. Uses old shoes as ammo
 - Can of Air
   | Shoots air at your enemies
+- Baseball bat
+  | shoots out a baseball that you can hit back for extra damage
