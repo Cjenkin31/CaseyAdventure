@@ -50,7 +50,7 @@ namespace CaseyAdventure.Content.Items
                 // User: AwesomePerson159 (great name btw)
                 Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(12));
 
-                Projectile.NewProjectile(source, position, perturbedSpeed, type, damage, knockback);
+                Projectile.NewProjectile(source, position, perturbedSpeed, type, damage, knockback,Main.myPlayer);
             }
             return true;
         }
