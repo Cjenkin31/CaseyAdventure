@@ -1,4 +1,4 @@
-- This is a mod made for one of my friends
+- Terraria Mod, Currently unpublished.
 - If you see any obvious problems, please make an issue for it
 Current Items
 - Floating Island Finder:
