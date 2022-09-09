@@ -9,6 +9,7 @@ namespace CaseyAdventure.Content.Items.Ammo
 	{
 		public override void SetStaticDefaults()
 		{
+			DisplayName.SetDefault("Slot Machine Coin");
 			Tooltip.SetDefault("Slot Machine Coins");
 		}
 
