@@ -1,7 +1,8 @@
 - Terraria Mod, Currently unpublished.
 - If you see any obvious problems, please make an issue for it
+
 Current Items
-- Floating Island Finder:
+- Floating Island Finder
   | Tell you how far you are from the nearest floating island
 - Bean Stalk
   | Grows a beanstalk all the way to either the skybox or until it hits somehting
