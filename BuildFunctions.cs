@@ -9,7 +9,7 @@ using Terraria.ID;
 
 namespace CaseyAdventure
 {
-    class ActionFunctions
+    class BuildFunctions
     {
         public static bool BlockInWay(int tilex, int tiley)
         {
@@ -101,25 +101,18 @@ namespace CaseyAdventure
             Vector2 tilesAwayLeft = new Vector2();
             int worldMaxX = Main.maxTilesX; 
             int worldMaxY = 600;
-
-            ScanRightSide(ref rightFound, ref x, ref y, ref tilesAwayRight, worldMaxX, worldMaxY);
-
             int scanRange = 0;
-            scanRange = SetScanRange(tilex, rightFound, tilesAwayRight);
-
-            x = tilex;
-            y = 0;
-
-            ScanLeftSide(ref leftFound, ref x, ref y, ref tilesAwayLeft, worldMaxY, scanRange);
-
             int numericalAwayRight = -1;
             int numericalAwayLeft = -1;
             string xAway = "You are: NIL X pos away.";
             string yAway = "You are: NIL Y pos away.";
 
+            ScanRightSide(ref rightFound, x, y, ref tilesAwayRight, worldMaxX, worldMaxY);
+            scanRange = SetScanRange(tilex, rightFound, tilesAwayRight);
+            ScanLeftSide(ref leftFound, x, y, ref tilesAwayLeft, worldMaxY, scanRange);
+
             numericalAwayRight = rightFound ? (int)tilesAwayRight.Distance(startingPos) : 99999999;
             numericalAwayLeft = leftFound ? (int)tilesAwayLeft.Distance(startingPos) : 99999999;
-
 
             SetChatMessage(tilex, tiley, rightFound, leftFound, tilesAwayRight, tilesAwayLeft, numericalAwayRight, numericalAwayLeft, ref xAway, ref yAway);
 
@@ -132,7 +125,7 @@ namespace CaseyAdventure
 
             return true;
 
-            static void ScanRightSide(ref bool rightFound, ref int x, ref int y, ref Vector2 tilesAwayRight, int worldMaxX, int worldMaxY)
+            static void ScanRightSide(ref bool rightFound, int x, int y, ref Vector2 tilesAwayRight, int worldMaxX, int worldMaxY)
             {
                 while (!rightFound)
                 {
@@ -145,8 +138,8 @@ namespace CaseyAdventure
                         x += 2;
                         y = 0;
                     }
-                    int tyle = Main.tile[x, y].TileType;
-                    if (tyle == TileID.Sunplate || tyle == TileID.Cloud || tyle == TileID.RainCloud || tyle == TileID.SnowCloud)
+                    int tile = Main.tile[x, y].TileType;
+                    if (tile == TileID.Sunplate || tile == TileID.Cloud || tile == TileID.RainCloud || tile == TileID.SnowCloud)
                     {
                         tilesAwayRight.X = x;
                         tilesAwayRight.Y = y;
@@ -158,7 +151,8 @@ namespace CaseyAdventure
                     }
                 }
             }
-            static void ScanLeftSide(ref bool leftFound, ref int x, ref int y, ref Vector2 tilesAwayLeft, int worldMaxY, int scanRange)
+
+            static void ScanLeftSide(ref bool leftFound, int x, int y, ref Vector2 tilesAwayLeft, int worldMaxY, int scanRange)
             {
                 while (!leftFound)
                 {
@@ -171,8 +165,8 @@ namespace CaseyAdventure
                         x -= 2;
                         y = 0;
                     }
-                    int tyle = Main.tile[x, y].TileType;
-                    if (tyle == TileID.Sunplate || tyle == TileID.Cloud || tyle == TileID.RainCloud || tyle == TileID.SnowCloud)
+                    int tile = Main.tile[x, y].TileType;
+                    if (tile == TileID.Sunplate || tile == TileID.Cloud || tile == TileID.RainCloud || tile == TileID.SnowCloud)
                     {
                         tilesAwayLeft.X = x;
                         tilesAwayLeft.Y = y;
@@ -189,7 +183,6 @@ namespace CaseyAdventure
             {            
                 if (numericalAwayLeft > numericalAwayRight || !leftFound)
                 {
-
                     xAway = ((tilex - tilesAwayRight.X) < 0) ? "Island located: " + Math.Abs((tilex - tilesAwayRight.X)) + " blocks to the right" : "Island located: " + (tilex - tilesAwayRight.X) + " blocks to the left";
                     yAway = "You are: " + (tiley - tilesAwayRight.Y) + " Y pos away."; 
                 }
@@ -219,48 +212,9 @@ namespace CaseyAdventure
 
             static int SetScanRange(int tilex, bool rightFound, Vector2 tilesAwayRight)
             {
-                int scanRange;
-                if (!rightFound)
-                {
-                    scanRange = 0;
-                }
-                else
-                {
-                    scanRange = (int)Math.Abs(tilex - (tilesAwayRight.X - tilex));
-                }
-                return scanRange;
+                return (!rightfound ? 0 : (int)Math.Abs(tilex - (tilesAwayRight.X - tilex)));
             }
         }
-        public static String[] getSymbols(){
-            String[] symbols = { "Bar","Seven","Cherries"};
-            return symbols;
-        }
-        public static String[] randomizeSymbols(String[] symbols)
-        {
-            int symbolLength = symbols.Length;
-            Random rnd = new Random();
-            for (int i = 0; i < symbolLength; i++){
-                symbols[rnd.Next(0, symbolLength)] = symbols[rnd.Next(0, symbolLength)];
-            }
-            return symbols;
-        }
-        public static int SpinSlotMachine()
-        {
-            String[] column1 = randomizeSymbols(getSymbols());
-            String[] column2 = randomizeSymbols(getSymbols());
-            String[] column3 = randomizeSymbols(getSymbols());
 
-            if (String.Equals(column1[0],column2[0]) && String.Equals(column2[0], column3[0]))
-            {
-                return column1[0] switch
-                {
-                    "Seven" => 20,
-                    "Bar" => 5,
-                    "Cherries" => 2,
-                    _ => 0,
-                };
-            }
-            return 0;
-        }
     }
 }

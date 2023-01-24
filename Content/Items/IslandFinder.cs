@@ -40,7 +40,7 @@ namespace CaseyAdventure.Content.Items
             int playerX = (int)(playerPosition.X / 16f);
             int playerY = (int)(playerPosition.Y / 16f);
 
-            ActionFunctions.Find(playerX, playerY);
+            BuildFunctions.Find(playerX, playerY);
             return true;
         }
 

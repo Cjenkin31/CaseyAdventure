@@ -59,7 +59,7 @@ namespace CaseyAdventure.Content.Items
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            int slotRollAmount = ActionFunctions.SpinSlotMachine();
+            int slotRollAmount = WeaponFunctions.SpinSlotMachine();
             for (int i = 0; i < slotRollAmount; i++)
             {
                 Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(12));
