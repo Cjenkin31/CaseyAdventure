@@ -1,4 +1,4 @@
-﻿using Terraria;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
@@ -48,7 +48,7 @@ namespace CaseyAdventure.Content.Items
         {
             Random rnd = new Random();
             int randomNum = rnd.Next(101);
-            Console.WriteLine(randomNum);
+            int timesThrown = 0;
 
             if (randomNum <= 33)
             {
