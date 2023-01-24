@@ -1,4 +1,4 @@
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
@@ -47,22 +47,25 @@ namespace CaseyAdventure.Content.Items
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Random rnd = new Random();
-            int randomNum = rnd.Next(101);
+            int randomNum = rnd.Next(3);
             int timesThrown = 0;
 
-            if (randomNum <= 33)
+            if (randomNum == 1)
             {
                 Item.shoot = ModContent.ProjectileType<Projectiles.ThrowingCardBlueQueen>();
+                timesThrown++;
             }
-            else if (randomNum > 33 && randomNum < 66)
+            else if (randomNum == 2)
             {
                 Item.shoot = ModContent.ProjectileType<Projectiles.ThrowingCardRedAce>();
+                timesThrown++;
             }
-            else if (randomNum >= 66 && randomNum < 100)
+            else if (randomNum == 3)
             {
                 Item.shoot = ModContent.ProjectileType<Projectiles.ThrowingCardYellowKing>();
+                timesThrown++;
             }
-            else if (randomNum >= 100)
+            if (timesThrown >= 6)
             {
                 for (int i = 0; i < 3; i++)
                 {
@@ -81,10 +84,8 @@ namespace CaseyAdventure.Content.Items
                             break;
                     }
                 }
-                
-            }
-            
-            
+                timesThrown=0;
+            }           
             return true;
         }
     }
